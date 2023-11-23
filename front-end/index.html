@@ -8,7 +8,7 @@
        */
       window.GLOBAL_CONFIG = {
         SCF_GATEWAY: "//say-my-name.ptvbkihbyzfmjjc.workers.dev",
-        SITE_NAME: "CNEMA_REMUX Link Grabber",
+        SITE_NAME: "CR Index",
         IS_CF: true,
       };
       if (window.GLOBAL_CONFIG.SCF_GATEWAY.indexOf("workers") === -1) {
@@ -1204,7 +1204,7 @@
                 );
                 const btn = document.querySelector(".btn.quote");
                 btn.innerHTML = "已复制";
-                setTimeout(() => (btn.innerHTML = "引用"), 250);
+                setTimeout(() => (btn.innerHTML = "Quote"), 250);
               });
             document
               .querySelector(".btn.share")
@@ -1226,7 +1226,7 @@
                 );
                 const btn = document.querySelector(".btn.share");
                 btn.innerHTML = "已复制";
-                setTimeout(() => (btn.innerHTML = "分享"), 250);
+                setTimeout(() => (btn.innerHTML = "Share"), 250);
               });
             switchRightDisplay("preview");
 
@@ -1603,9 +1603,9 @@
           <div class="preview">
             <div class="info">
               <div class="file-name"></div>
-              <div class="btn download">下载</div>
-              <div class="btn quote">引用</div>
-              <div class="btn share">分享</div>
+              <div class="btn download">Download</div>
+              <div class="btn quote">Quote</div>
+              <div class="btn share">Share</div>
             </div>
             <div class="content"></div>
           </div>
