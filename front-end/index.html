@@ -2,13 +2,10 @@
 <html>
   <head>
     <script>
-      /**
-       * SCF_GATEWAY：SCF 云函数网关地址
-       * SITE_NAME：站点名称
-       */
+     
       window.GLOBAL_CONFIG = {
         SCF_GATEWAY: "//say-my-name.ptvbkihbyzfmjjc.workers.dev",
-        SITE_NAME: "CR Index",
+        SITE_NAME: "T.ME/CNEMA_REMUX",
         IS_CF: true,
       };
       if (window.GLOBAL_CONFIG.SCF_GATEWAY.indexOf("workers") === -1) {
@@ -1067,7 +1064,7 @@
                 } else {
                   element.src = resource;
                 }
-                document.getElementsByTagName("head")[0].appendChild(element);
+                document.getElementsByTag("head")[0].appendChild(element);
               },
 
               createDplayer: (video, type, elem) => {
@@ -1191,7 +1188,7 @@
                 content.appendChild(textWrapper);
                 break;
             }
-            document.querySelector(".file-name").innerHTML = path;
+            document.querySelector(".file-").innerHTML = path;
             document
               .querySelector(".btn.")
               .addEventListener("click", () => (location.href = url));
@@ -1203,7 +1200,7 @@
                   window.api.url + "?file=" + encodeURI(path)
                 );
                 const btn = document.querySelector(".btn.quote");
-                btn.innerHTML = "已复制";
+                btn.innerHTML = "Copied";
                 setTimeout(() => (btn.innerHTML = "Quote"), 250);
               });
             document
@@ -1220,12 +1217,12 @@
                 previewHandler.copyTextContent(
                   null,
                   window.location.origin +
-                    window.location.pathname +
+                    window.location.path +
                     "?path=" +
                     encodeURI(sharePath())
                 );
                 const btn = document.querySelector(".btn.share");
-                btn.innerHTML = "已复制";
+                btn.innerHTML = "Copied";
                 setTimeout(() => (btn.innerHTML = "Share"), 250);
               });
             switchRightDisplay("preview");
@@ -1366,7 +1363,7 @@
         if (level > 1) return;
         files.files.forEach((file) => {
           const parent = files.parent === "/" ? "" : files.parent;
-          const path = parent + "/" + file.name;
+          const path = parent + "/" + file.;
           if (!file.url) {
             // console.log('caching ' + path + ', level ' + level);
             window.fileCache.set(path, true);
@@ -1382,7 +1379,7 @@
               },
               () => window.fileCache.set(path, false)
             );
-          } else if (file.name.split(".").pop() === "md") {
+          } else if (file..split(".").pop() === "md") {
             // console.log('caching ' + path + ', level ' + level);
             window.fileCache.set(path, true);
             sendRequest(
@@ -1400,7 +1397,7 @@
       async function preCacheCheck(cache, path) {
         cache.files.forEach((file) => {
           const prefix = path === window.api.root ? "" : path;
-          const nextPath = prefix + "/" + file.name;
+          const nextPath = prefix + "/" + file.;
           const pathCache = window.fileCache.get(nextPath);
           if (!file.url) {
             if (!pathCache) {
@@ -1421,7 +1418,7 @@
             } else if (pathCache.files) {
               preCacheCheck(pathCache, nextPath);
             }
-          } else if (file.name.split(".").pop() === "md") {
+          } else if (file..split(".").pop() === "md") {
             if (!pathCache && pathCache !== true) {
               // console.log('inner caching ' + nextPath);
               window.fileCache.set(nextPath, true);
@@ -1473,9 +1470,9 @@
       }
 
       document.addEventListener("DOMContentLoaded", () => {
-        document.title = window.GLOBAL_CONFIG.SITE_NAME;
+        document.title = window.GLOBAL_CONFIG.SITE_;
         document.querySelector(".site").textContent =
-          window.GLOBAL_CONFIG.SITE_NAME;
+          window.GLOBAL_CONFIG.SITE_;
         window.api = {
           root: "/",
           url: window.GLOBAL_CONFIG.SCF_GATEWAY,
@@ -1541,7 +1538,7 @@
         <div class="tree-node">
           <ion-icon></ion-icon>
           <ion-icon></ion-icon>
-          <div class="tree-node-name"></div>
+          <div class="tree-node-"></div>
         </div>
       </div>
     </template>
