@@ -2,13 +2,13 @@
 <html>
   <head>
     <script>
-     /**
+      /**
        * SCF_GATEWAY：SCF 云函数网关地址
        * SITE_NAME：站点名称
        */
       window.GLOBAL_CONFIG = {
         SCF_GATEWAY: "//say-my-name.ptvbkihbyzfmjjc.workers.dev",
-        SITE_NAME: "T.ME/CNEMA_REMUX",
+        SITE_NAME: "CNEMA REMUX",
         IS_CF: true,
       };
       if (window.GLOBAL_CONFIG.SCF_GATEWAY.indexOf("workers") === -1) {
@@ -206,7 +206,7 @@
         border: solid rgb(218, 215, 215) 1px;
         border-radius: 1em;
         margin: 1em 0.2em;
-        width: 5em;
+        width: 4em;
         height: 2em;
         line-height: 2em;
         user-select: none;
@@ -1067,7 +1067,7 @@
                 } else {
                   element.src = resource;
                 }
-                document.getElementsByTag("head")[0].appendChild(element);
+                document.getElementsByTagName("head")[0].appendChild(element);
               },
 
               createDplayer: (video, type, elem) => {
@@ -1191,9 +1191,9 @@
                 content.appendChild(textWrapper);
                 break;
             }
-            document.querySelector(".file-").innerHTML = path;
+            document.querySelector(".file-name").innerHTML = path;
             document
-              .querySelector(".btn.")
+              .querySelector(".btn.download")
               .addEventListener("click", () => (location.href = url));
             document
               .querySelector(".btn.quote")
@@ -1204,7 +1204,7 @@
                 );
                 const btn = document.querySelector(".btn.quote");
                 btn.innerHTML = "Copied";
-                setTimeout(() => (btn.innerHTML = "Quote"), 250);
+                setTimeout(() => (btn.innerHTML = "引用"), 250);
               });
             document
               .querySelector(".btn.share")
@@ -1220,7 +1220,7 @@
                 previewHandler.copyTextContent(
                   null,
                   window.location.origin +
-                    window.location.path +
+                    window.location.pathname +
                     "?path=" +
                     encodeURI(sharePath())
                 );
@@ -1366,7 +1366,7 @@
         if (level > 1) return;
         files.files.forEach((file) => {
           const parent = files.parent === "/" ? "" : files.parent;
-          const path = parent + "/" + file.;
+          const path = parent + "/" + file.name;
           if (!file.url) {
             // console.log('caching ' + path + ', level ' + level);
             window.fileCache.set(path, true);
@@ -1382,7 +1382,7 @@
               },
               () => window.fileCache.set(path, false)
             );
-          } else if (file..split(".").pop() === "md") {
+          } else if (file.name.split(".").pop() === "md") {
             // console.log('caching ' + path + ', level ' + level);
             window.fileCache.set(path, true);
             sendRequest(
@@ -1400,7 +1400,7 @@
       async function preCacheCheck(cache, path) {
         cache.files.forEach((file) => {
           const prefix = path === window.api.root ? "" : path;
-          const nextPath = prefix + "/" + file.;
+          const nextPath = prefix + "/" + file.name;
           const pathCache = window.fileCache.get(nextPath);
           if (!file.url) {
             if (!pathCache) {
@@ -1421,7 +1421,7 @@
             } else if (pathCache.files) {
               preCacheCheck(pathCache, nextPath);
             }
-          } else if (file..split(".").pop() === "md") {
+          } else if (file.name.split(".").pop() === "md") {
             if (!pathCache && pathCache !== true) {
               // console.log('inner caching ' + nextPath);
               window.fileCache.set(nextPath, true);
@@ -1473,9 +1473,9 @@
       }
 
       document.addEventListener("DOMContentLoaded", () => {
-        document.title = window.GLOBAL_CONFIG.SITE_;
+        document.title = window.GLOBAL_CONFIG.SITE_NAME;
         document.querySelector(".site").textContent =
-          window.GLOBAL_CONFIG.SITE_;
+          window.GLOBAL_CONFIG.SITE_NAME;
         window.api = {
           root: "/",
           url: window.GLOBAL_CONFIG.SCF_GATEWAY,
@@ -1541,7 +1541,7 @@
         <div class="tree-node">
           <ion-icon></ion-icon>
           <ion-icon></ion-icon>
-          <div class="tree-node-"></div>
+          <div class="tree-node-name"></div>
         </div>
       </div>
     </template>
@@ -1603,7 +1603,7 @@
           <div class="preview">
             <div class="info">
               <div class="file-name"></div>
-              <div class="btn ">Download</div>
+              <div class="btn download">Download</div>
               <div class="btn quote">Quote</div>
               <div class="btn share">Share</div>
             </div>
